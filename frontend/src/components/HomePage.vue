@@ -12,10 +12,12 @@ import router1 from '@/routes/routes'
             }
         },
         created(){
-            const user = JSON.parse(localStorage.getItem('user'))
-            this.name = user.name
             if(!localStorage.getItem('user')){
                 router1.push('/login')
+            }
+            else{
+                const user = JSON.parse(localStorage.getItem('user'))
+                this.name = user.name
             }
         }
     }
