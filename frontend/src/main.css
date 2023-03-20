@@ -1,0 +1,84 @@
+form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  input,
+  textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .radio {
+    display: flex;
+  }
+
+  .delete {
+    display: block;
+    width: 80%;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(143, 37, 37);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .update {
+    display: block;
+    width: 80%;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: yellowgreen;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .tasklist{
+    display: flex;
+  }
+
+  .signup{
+    display: block;
+    width: 10%;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: cadetblue;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+ /* .sidebarComp {
+    float: left;
+  } */
+  /*
+  .createTable {
+    float: right;
+  } */
