@@ -1,32 +1,36 @@
 <template>
   <div>
     <div class="table" v-if="tasks.length">
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Due-date</th>
-          <th>Status</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="task in tasks" :key="task.task_id">
-          <td>{{ task.title }}</td>
-          <td>{{ task.description }}</td>
-          <td>{{ task.due_date }}</td>
-          <td>{{ task.status }}</td>
-          <td>
-            <button @click="deleteTask(task.task_id)" class="delete">
-              Delete
-            </button>
-          </td>
-          <td><button @click="updateTask(task.task_id)" class="update">Update</button></td>
-        </tr>
-      </tbody>
-    </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Due-date</th>
+            <th>Status</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="task in tasks" :key="task.task_id">
+            <td>{{ task.title }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.due_date }}</td>
+            <td>{{ task.status }}</td>
+            <td>
+              <button @click="deleteTask(task.task_id)" class="delete">
+                Delete
+              </button>
+            </td>
+            <td>
+              <button @click="updateTask(task.task_id)" class="update">
+                Update
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <h1 v-else>No Tasks</h1>
   </div>
@@ -34,7 +38,7 @@
 
 <script>
 import axios from "axios";
-import router from '@/routes/routes'
+import router from "@/routes/routes";
 export default {
   name: "TaskList",
 
@@ -42,33 +46,35 @@ export default {
     return {
       tasklist: [],
       tasks: [],
-      newList: null
+      newList: null,
     };
   },
   methods: {
     deleteTask(task_id) {
-
-      axios.post("http://localhost:5000/deleteTask", { task_id })
-      .then(res => {
-        console.log(res);
-        const index = this.tasks.findIndex(item => item.task_id === task_id);
-      if (index >= 0) {
-        this.tasks.splice(index, 1);
-      }
-    })
-      .catch(err => console.log(err))
+      axios
+        .post("http://localhost:5000/deleteTask", { task_id })
+        .then((res) => {
+          console.log(res);
+          const index = this.tasks.findIndex(
+            (item) => item.task_id === task_id
+          );
+          if (index >= 0) {
+            this.tasks.splice(index, 1);
+          }
+        })
+        .catch((err) => console.log(err));
     },
 
-    updateTask(task_id){
+    updateTask(task_id) {
       console.log(task_id);
-      router.push(`/task/${task_id}`)
+      router.push(`/task/${task_id}`);
+    },
+  },
+  created() {
+    if (!localStorage.getItem("user")) {
+      router.push("/login");
     }
   },
-  created(){
-            if(!localStorage.getItem('user')){
-                router.push('/login')
-            }
-      },
   mounted() {
     axios
       .get("http://localhost:5000/tasklist")
@@ -88,12 +94,12 @@ export default {
 <style>
 table {
   border-collapse: collapse;
-  width: 100%; 
+  width: 100%;
 }
 
 .table {
   margin-left: 250px;
-  }
+}
 
 th,
 td {
