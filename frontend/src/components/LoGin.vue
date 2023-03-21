@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="form">
     <!-- <button class="signup">Signup</button> -->
     <form @submit.prevent="checkUser">
-      <span v-if="!userExists">User does not exist</span>
-      <span v-if="incorrect">Incorrect Password</span>
+      <span v-if="!userExists" class="error">User does not exist!</span>
+      <span v-if="incorrect" class="error">Incorrect Password!</span>
       <label for="uname">Username</label>
       <input type="text" id="uname" v-model="uname" required />
       <br />
@@ -77,4 +77,7 @@ export default {
 </script>
 
 <style scoped>
+.error{
+  color: red;
+}
 </style>

@@ -2,6 +2,10 @@ form {
     max-width: 600px;
     margin: 0 auto;
   }
+
+  .form{
+    margin-top: 70px;
+  }
   
   label {
     display: block;

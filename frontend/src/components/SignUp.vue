@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="form">
     <form @submit.prevent="signup" action="/home">
       <!-- <label for="id">Id</label>
       <input type="text" id="id" v-model="formData.id" required />
