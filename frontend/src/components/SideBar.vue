@@ -1,5 +1,6 @@
 <template>
     <div class="sidebar">
+      <div v-if="user == 'user'">
     <h2>Hello user!</h2>
     <ul>
       <!-- <li><router-link to="/">Home</router-link></li> -->
@@ -8,6 +9,15 @@
       <li><router-link to="/tasklist">Task List</router-link></li>
       <button class="signout" @click="signout"><router-link to="/login">Sign Out</router-link></button>
     </ul>
+    </div>
+    <div v-else>
+        <h2>Hello {{user}}!</h2>
+    <ul>
+      <li><router-link to="/usersdata">Users Data</router-link></li>
+      <li><router-link to="/tasksdata">Tasks Data</router-link></li>
+      <button class="signout" @click="signout"><router-link to="/login">Sign Out</router-link></button>
+    </ul>
+    </div>
   </div>
 </template>
 
@@ -15,12 +25,14 @@
 import router from '../routes/routes'
     export default {
         name: 'SideBar',
+        props: ['user'],
         methods : {
             signout(){
                 localStorage.removeItem('user')
                 router.push('/login')
             }
         },
+      
     }
 </script>
 

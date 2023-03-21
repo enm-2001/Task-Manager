@@ -36,10 +36,17 @@ export default {
   methods: {
     update(){
         // console.log(this.task.task_id);
+        const user = JSON.parse(localStorage.getItem('user'))
         axios.put(`http://localhost:5000/tasks/${this.task.task_id}`, this.task )
         .then(res => {
-            console.log(res.data),
-            router.push('/tasklist')
+            console.log(res.data);
+            if(user.user_type == 'user'){
+              router.push('/tasklist')
+            }
+            else if(user.user_type == 'admin'){
+              router.push('/tasksdata')
+            }
+            
         })
         .catch(err => console.log(err))
     }

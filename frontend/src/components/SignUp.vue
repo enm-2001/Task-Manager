@@ -85,6 +85,11 @@ export default {
         });
     },
   },
+  created() {
+    if (localStorage.getItem("user")) {
+      router.push("/home");
+    }
+  },
 };
 </script>
 

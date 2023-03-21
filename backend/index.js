@@ -130,6 +130,19 @@ app.post('/deleteTask', (req, res) => {
     client.end;
 })
 
+app.post('/deleteUser', (req, res) => {
+    const {user_id} = req.body; 
+    client.query(`delete from users where user_id = ${user_id}`,(err, result) => {
+        if(!err){
+            res.send("Deletion was successful")
+        }
+        else{
+            console.log(err);
+        }
+    })
+    client.end;
+})
+
 app.put('/tasks/:id', (req, res) => {
     const task_id = req.params.id
     const task = req.body

@@ -6,10 +6,12 @@ import CreateTask from '../components/CreateTask'
 import ProfilePage from '../components/ProfilePage'
 import UpdateTask from '../components/UpdateTask'
 import AdminPanel from '../components/AdminPanel'
+import UsersData from '../components/UsersData'
+import TasksData from '../components/TasksData'
 import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
-  { path: '/', component: HomePage },
+  { path: '/home', component: HomePage },
   { path: '/login', component: LoGin },
   { path: '/signup', component: SignUp },
   { path: '/tasklist', component: TaskList },
@@ -17,6 +19,8 @@ const routes = [
   { path: '/profile', component: ProfilePage },
   { path: '/task/:id', component: UpdateTask },
   { path: '/admin', component: AdminPanel },
+  { path: '/usersdata', component: UsersData },
+  { path: '/tasksdata', component: TasksData },
 ];
 
 

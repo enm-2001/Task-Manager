@@ -14,7 +14,7 @@
       <br />
       <button type="submit">Login</button>
     </form>
-    <br>
+    <br />
     <div>Not a user? &nbsp;<router-link to="/signup">Sign up</router-link></div>
   </div>
 </template>
@@ -55,29 +55,32 @@ export default {
           password: this.password,
         })
         .then((res) => {
-            // console.log(res.data);
-            if(!res.data.pcheck){
-                this.incorrect = res.data.pcheck;
-                localStorage.setItem("user", JSON.stringify(res.data));
-                if(res.data.user_type == 'user'){
-                  router.push("/");
-                }
-                else{
-                  router.push("/admin")
-                }
+          // console.log(res.data);
+          if (!res.data.pcheck) {
+            this.incorrect = res.data.pcheck;
+            localStorage.setItem("user", JSON.stringify(res.data));
+            if (res.data.user_type == "user") {
+              router.push("/home");
+            } else {
+              router.push("/admin");
             }
-            else{
-                this.incorrect = true
-            }
+          } else {
+            this.incorrect = true;
+          }
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
     },
+  },
+  created() {
+    if (localStorage.getItem("user")) {
+      router.push("/home");
+    }
   },
 };
 </script>
 
 <style scoped>
-.error{
+.error {
   color: red;
 }
 </style>

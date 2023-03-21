@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="table">
+  <div>
+    <div class="table">
       <h2>Users Data</h2>
       <table>
         <thead>
@@ -9,6 +9,7 @@
             <th>Name of user</th>
             <th>Username</th>
             <th>User Role</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -17,23 +18,44 @@
             <td>{{ user.name }}</td>
             <td>{{ user.username }}</td>
             <td>{{ user.user_type }}</td>
+            <td><button @click="deleteUser(user.user_id)" class="delete">Delete</button></td>
           </tr>
         </tbody>
       </table>
     </div>
-    </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: 'UsersData',
-        props: {
-            users: [],
-            tasks: []
-        }
+import axios from 'axios';
+export default {
+  name: "UsersData",
+  data() {
+    return {
+      users: [],
+    };
+  },
+  methods: {
+    deleteUser(user_id){
+      axios.post("http://localhost:5000/deleteUser", { user_id })
+      .then(res => {
+        console.log(res);
+        const index = this.users.findIndex(item => item.user_id === user_id);
+      if (index >= 0) {
+        this.users.splice(index, 1);
+      }
+    })
+      .catch(err => console.log(err))
     }
+  },
+  created() {
+    axios
+      .get("http://localhost:5000/users")
+      .then((res) => (this.users = res.data))
+      .catch((err) => console.log(err));
+  },
+};
 </script>
 
 <style scoped>
-
 </style>
