@@ -73,6 +73,9 @@ export default {
     }
   },
   created(){
+            if(!localStorage.getItem('user')){
+                router.push('/login')
+            }
     axios
       .get("http://localhost:5000/users")
       .then((res) => (this.users = res.data))

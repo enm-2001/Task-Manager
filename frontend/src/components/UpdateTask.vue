@@ -51,6 +51,11 @@ export default {
         .catch(err => console.log(err))
     }
   },
+  created(){
+            if(!localStorage.getItem('user')){
+                router.push('/login')
+            }
+      },
   mounted() {
     const id = this.$route.params.id;
     axios

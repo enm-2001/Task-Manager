@@ -18,7 +18,11 @@
             <td>{{ user.name }}</td>
             <td>{{ user.username }}</td>
             <td>{{ user.user_type }}</td>
-            <td><button @click="deleteUser(user.user_id)" class="delete">Delete</button></td>
+            <td>
+              <button @click="deleteUser(user.user_id)" class="delete">
+                Delete
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -27,7 +31,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
+import router from '../routes/routes';
 export default {
   name: "UsersData",
   data() {
@@ -36,19 +41,26 @@ export default {
     };
   },
   methods: {
-    deleteUser(user_id){
-      axios.post("http://localhost:5000/deleteUser", { user_id })
-      .then(res => {
-        console.log(res);
-        const index = this.users.findIndex(item => item.user_id === user_id);
-      if (index >= 0) {
-        this.users.splice(index, 1);
-      }
-    })
-      .catch(err => console.log(err))
-    }
+    deleteUser(user_id) {
+      axios
+        .post("http://localhost:5000/deleteUserTask", { user_id })
+        .then((res) => {
+          axios.post("http://localhost:5000/deleteUser", { user_id });
+          console.log(res);
+          const index = this.users.findIndex(
+            (item) => item.user_id === user_id
+          );
+          if (index >= 0) {
+            this.users.splice(index, 1);
+          }
+        })
+        .catch((err) => console.log(err));
+    },
   },
   created() {
+            if(!localStorage.getItem('user')){
+                router.push('/login')
+            }
     axios
       .get("http://localhost:5000/users")
       .then((res) => (this.users = res.data))

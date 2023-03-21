@@ -64,6 +64,11 @@ export default {
       router.push(`/task/${task_id}`)
     }
   },
+  created(){
+            if(!localStorage.getItem('user')){
+                router.push('/login')
+            }
+      },
   mounted() {
     axios
       .get("http://localhost:5000/tasklist")
