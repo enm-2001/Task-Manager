@@ -1,10 +1,10 @@
 <template>
-  <h2>Welcome {{name}} !!</h2>
+  <h2>Welcome {{ name }} !!</h2>
 </template>
 
 <script>
 import axios from "axios";
-import router from '../routes/routes';
+import router from "../routes/routes";
 export default {
   name: "AdminPanel",
   data() {
@@ -13,8 +13,11 @@ export default {
     };
   },
   created() {
-    if (!localStorage.getItem("user")) {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
       router.push("/login");
+    } else if (user && user.user_type == "user") {
+      router.push("/home");
     } else {
       const user = JSON.parse(localStorage.getItem("user"));
       this.name = user.name;
