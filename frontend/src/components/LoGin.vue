@@ -1,6 +1,5 @@
 <template>
   <div class="form">
-    <!-- <button class="signup">Signup</button> -->
     <form @submit.prevent="checkUser">
       <span v-if="!userExists" class="error">User does not exist!</span>
       <span v-if="incorrect" class="error">Incorrect Password!</span>

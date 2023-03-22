@@ -71,8 +71,11 @@ export default {
     },
   },
   created() {
-    if (!localStorage.getItem("user")) {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
       router.push("/login");
+    } else if (user && user.user_type == "admin") {
+      router.push("/admin");
     }
   },
   mounted() {

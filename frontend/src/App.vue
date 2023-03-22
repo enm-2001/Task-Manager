@@ -3,8 +3,8 @@
     <div v-if="userLogged"><SideBar user = "user"/></div>
     <div v-if="adminLogged"><SideBar user = "admin"/></div>
     <div v-if="userNotLogged">
-      <button><router-link to="/login">Login</router-link></button>&nbsp;
-      <button><router-link to="/signup">Signup</router-link></button>
+      <router-link to="/login"><button class="signup">Login</button></router-link>&nbsp;
+      <router-link to="/signup"><button class="signup">Signup</button></router-link>
       <br>
       <h1>Welcome to Task Manager!</h1>
     </div>
@@ -18,7 +18,7 @@
 import { watch, ref } from "vue";
 import { useRoute } from "vue-router";
 import SideBar from "./components/SideBar";
-import router from './routes/routes';
+// import router from './routes/routes';
 export default {
   name: "App",
   components: {
@@ -71,13 +71,13 @@ export default {
     };
   },
   created() {
-    const user = JSON.parse(localStorage.getItem('user'))
-    if (user && user.user_type == 'user') {
-      router.push("/home");
-    }
-    else if(user && user.user_type == 'admin'){
-      router.push("/admin")
-    }
+    // const user = JSON.parse(localStorage.getItem('user'))
+    // if (user && user.user_type == 'user') {
+    //   router.push("/home");
+    // }
+    // else if(user && user.user_type == 'admin'){
+    //   router.push("/admin")
+    // }
     this.userNotLogged = true;
   },
 };

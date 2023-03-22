@@ -1,17 +1,5 @@
 <template>
-  <div>
-    <!-- <div class="sidebar">
-    <h2>Hello admin!</h2>
-      <button class="button" @click="activeTab = 'UsersData'">Users Data</button>
-      <br>
-      <button class="button" @click="activeTab = 'TasksData'">Tasks Data</button>
-      <br>
-      <button class="signout" @click="signout"><router-link to="/login">Sign Out</router-link></button>
-    </div>
-
-    <component :is="activeTab" :users = 'users' :tasks = 'tasks'/> -->
-    Hello {{ name }}!!
-  </div>
+  <h2>Welcome {{name}} !!</h2>
 </template>
 
 <script>

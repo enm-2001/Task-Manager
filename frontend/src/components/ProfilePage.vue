@@ -24,10 +24,12 @@ export default {
   },
   mounted() {
     const item = localStorage.getItem("user");
+    const myItem = JSON.parse(item);
     if (!item) {
       router.push("/login");
+    } else if (item && myItem.user_type == "admin") {
+      router.push("/admin");
     } else {
-      const myItem = JSON.parse(item);
       axios
         .get(`http://localhost:5000/users/${myItem.user_id}`)
         .then((res) => {

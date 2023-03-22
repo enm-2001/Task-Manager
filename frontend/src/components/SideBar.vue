@@ -1,7 +1,7 @@
 <template>
     <div class="sidebar">
       <div v-if="user == 'user'">
-    <h2>Hello user!</h2>
+    <h2>Hello {{user}}!</h2>
     <ul>
       <!-- <li><router-link to="/">Home</router-link></li> -->
       <li><router-link to="/profile">Profile</router-link></li>
@@ -13,6 +13,7 @@
     <div v-else>
         <h2>Hello {{user}}!</h2>
     <ul>
+      <li><router-link to="/admin">Home</router-link></li>
       <li><router-link to="/usersdata">Users Data</router-link></li>
       <li><router-link to="/tasksdata">Tasks Data</router-link></li>
       <button class="signout" @click="signout"><router-link to="/login">Sign Out</router-link></button>

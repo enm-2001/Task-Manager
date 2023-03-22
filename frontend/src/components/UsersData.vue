@@ -58,8 +58,12 @@ export default {
     },
   },
   created() {
-            if(!localStorage.getItem('user')){
+   const user = JSON.parse(localStorage.getItem('user'))
+            if(!user){
                 router.push('/login')
+            }
+            else if(user && user.user_type == 'user'){
+                router.push('/home')
             }
     axios
       .get("http://localhost:5000/users")
