@@ -88,6 +88,9 @@ export default {
         this.tasks = this.tasklist.filter(
           (item) => item.user_id == `${myItem.user_id}`
         );
+        this.tasks = this.tasks.sort((a, b) => {
+            return a.task_id - b.task_id;
+          });
       })
       .catch((err) => console.log(err));
   },

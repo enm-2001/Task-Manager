@@ -16,7 +16,7 @@
         v-on:blur="checkUsername(formData.uname)"
         required
       />
-      <span v-if="usernameExists">Username already exists</span>
+      <span class="error" v-if="usernameExists">Username already exists</span>
    
 
       <label for="email">Email</label>

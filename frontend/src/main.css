@@ -79,6 +79,10 @@ form {
     cursor: pointer;
   }
 
+ .error{
+  color: red;
+}
+
  /* .sidebarComp {
     float: left;
   } */
